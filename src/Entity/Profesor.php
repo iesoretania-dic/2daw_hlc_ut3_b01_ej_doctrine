@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -137,7 +137,7 @@ class Profesor
     /**
      * @return Parte[]|Collection
      */
-    public function getPartes(): ArrayCollection|Collection|array
+    public function getPartes(): array
     {
         return $this->partes;
     }
@@ -146,7 +146,7 @@ class Profesor
      * @param Parte[]|Collection $partes
      * @return Profesor
      */
-    public function setPartes(ArrayCollection|Collection|array $partes): Profesor
+    public function setPartes($partes): Profesor
     {
         $this->partes = $partes;
         return $this;
@@ -173,7 +173,7 @@ class Profesor
     /**
      * @return Grupo[]|Collection
      */
-    public function getGrupos(): Collection|array
+    public function getGrupos(): array
     {
         return $this->grupos;
     }
@@ -182,7 +182,7 @@ class Profesor
      * @param Grupo[]|Collection $grupos
      * @return Profesor
      */
-    public function setGrupos(Collection|array $grupos): Profesor
+    public function setGrupos($grupos): Profesor
     {
         $this->grupos = $grupos;
         return $this;

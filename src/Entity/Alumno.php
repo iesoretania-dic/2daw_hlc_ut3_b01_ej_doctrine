@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Entity;
+namespace App\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -172,7 +172,7 @@ class Alumno
     /**
      * @return Parte[]|Collection
      */
-    public function getPartes(): Collection|array
+    public function getPartes(): array
     {
         return $this->partes;
     }
@@ -181,7 +181,7 @@ class Alumno
      * @param Parte[]|Collection $partes
      * @return Alumno
      */
-    public function setPartes(Collection|array $partes): Alumno
+    public function setPartes($partes): Alumno
     {
         $this->partes = $partes;
         return $this;
