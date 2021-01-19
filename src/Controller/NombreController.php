@@ -32,4 +32,16 @@ class NombreController extends AbstractController
             'alumnos' => $alumnos
         ]);
     }
+
+    /**
+     * @Route("/ap3/{nombre}", name="apartado3")
+     */
+    public function ap3(AlumnoRepository $alumnoRepository, string $nombre) : Response
+    {
+        $alumnos = $alumnoRepository->buscarNombre($nombre);
+
+        return $this->render('alumno/listado.html.twig', [
+            'alumnos' => $alumnos
+        ]);
+    }
 }

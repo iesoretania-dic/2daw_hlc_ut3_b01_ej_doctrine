@@ -16,10 +16,11 @@ class AlumnoRepository extends ServiceEntityRepository
     public function buscarMaria() : array
     {
         //return $this->findBy(['nombre' => 'María']);
-        return $this
+        /*return $this
             ->getEntityManager()
             ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.nombre = 'María'")
-            ->getResult();
+            ->getResult();*/
+        return $this->buscarNombre('María');
     }
 
     public function buscarNoMaria() : array
@@ -27,6 +28,15 @@ class AlumnoRepository extends ServiceEntityRepository
         return $this
             ->getEntityManager()
             ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.nombre != 'María'")
+            ->getResult();
+    }
+
+    public function buscarNombre(string $nombre) : array
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE a.nombre = :nom")
+            ->setParameter('nom', $nombre)
             ->getResult();
     }
 }
