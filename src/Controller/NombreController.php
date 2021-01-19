@@ -44,4 +44,16 @@ class NombreController extends AbstractController
             'alumnos' => $alumnos
         ]);
     }
+
+    /**
+     * @Route("/ap4", name="apartado4")
+     */
+    public function ap4(AlumnoRepository $alumnoRepository) : Response
+    {
+        $alumnos = $alumnoRepository->buscarApellido('Ojeda');
+
+        return $this->render('alumno/listado.html.twig', [
+            'alumnos' => $alumnos
+        ]);
+    }
 }
