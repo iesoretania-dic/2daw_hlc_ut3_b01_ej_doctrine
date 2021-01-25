@@ -68,4 +68,16 @@ class NombreController extends AbstractController
             'alumnos' => $alumnos
         ]);
     }
+
+    /**
+     * @Route("/ap6", name="apartado6")
+     */
+    public function ap6(AlumnoRepository $alumnoRepository) : Response
+    {
+        $cuenta = $alumnoRepository->contarAnioNacimiento(1997);
+
+        return $this->render('alumno/cuenta.html.twig', [
+            'cuenta' => $cuenta
+        ]);
+    }
 }
