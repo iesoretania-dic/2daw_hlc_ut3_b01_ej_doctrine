@@ -21,4 +21,20 @@ class GrupoRepository extends ServiceEntityRepository
             ->createQuery("SELECT g, t FROM App\\Entity\\Grupo g JOIN g.tutor t ORDER BY g.descripcion")
             ->getResult();
     }
+
+    public function buscarOrdenadosDescendiente() : array
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery("SELECT g, t FROM App\\Entity\\Grupo g JOIN g.tutor t ORDER BY g.descripcion DESC")
+            ->getResult();
+    }
+
+    public function buscarOrdenadosDescendienteConCuenta() : array
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery("SELECT g, t, SIZE(g.alumnado) FROM App\\Entity\\Grupo g JOIN g.tutor t ORDER BY g.descripcion DESC")
+            ->getResult();
+    }
 }

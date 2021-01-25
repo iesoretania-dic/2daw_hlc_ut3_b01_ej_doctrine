@@ -137,7 +137,7 @@ class Grupo
     /**
      * @return Alumno[]|Collection
      */
-    public function getAlumnado(): array
+    public function getAlumnado(): Collection
     {
         return $this->alumnado;
     }
