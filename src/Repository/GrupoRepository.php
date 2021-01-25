@@ -18,7 +18,7 @@ class GrupoRepository extends ServiceEntityRepository
     {
         return $this
             ->getEntityManager()
-            ->createQuery("SELECT g FROM App\\Entity\\Grupo g ORDER BY g.descripcion")
+            ->createQuery("SELECT g, t FROM App\\Entity\\Grupo g JOIN g.tutor t ORDER BY g.descripcion")
             ->getResult();
     }
 }
