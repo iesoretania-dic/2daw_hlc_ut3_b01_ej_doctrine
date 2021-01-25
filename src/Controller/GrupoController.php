@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Grupo;
 use App\Repository\AlumnoRepository;
 use App\Repository\GrupoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -46,19 +47,14 @@ class GrupoController extends AbstractController
     }
 
     /**
-     * @Route("/listadoAlumnado/{grupo}", name="apartado10_alumnado")
+     * @Route("/listadoAlumnado/{id}", name="apartado10_alumnado")
      */
-    public function ap10alumnado(GrupoRepository $grupoRepository, AlumnoRepository $alumnoRepository, $grupo) : Response
+    public function ap10alumnado(AlumnoRepository $alumnoRepository, Grupo $grupo) : Response
     {
-        $gr = $grupoRepository->find($grupo);
-
-        if ($gr === null) {
-            throw $this->createNotFoundException();
-        }
-        $alumnado = $alumnoRepository->buscarPorGrupo($gr);
+        $alumnado = $alumnoRepository->buscarPorGrupo($grupo);
         return $this->render('alumno/listado_grupo.html.twig', [
             'alumnos' => $alumnado,
-            'grupo' => $gr
+            'grupo' => $grupo
         ]);
     }
 }

@@ -15,7 +15,7 @@
         <tbody>
             {% for item in grupos %}
                 <tr>
-                    <td><a href="{{ path('apartado10_alumnado', {'grupo': item[0].id}) }}">{{ item[0].descripcion }}</a></td>
+                    <td><a href="{{ path('apartado10_alumnado', {'id': item[0].id}) }}">{{ item[0].descripcion }}</a></td>
                     <td>{{ item[0].aula }}</td>
                     <td>{{ item[0].planta }}</td>
                     <td>{{ item[0].tutor }}</td>
