@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Seleccione profesor para ver sus partes</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Apellidos</th>
+            <th>Nombre</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for profesor in profesores %}
+            <tr>
+                <td><a href="{{ path('apartado11_partes', {'id': profesor.id}) }}">{{ profesor.apellidos }}</a></td>
+                <td>{{ profesor.nombre }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Listado de partes</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Alumno</th>
+            <th>Profesor</th>
+            <th>Fecha</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for parte in partes %}
+            <tr>
+                <td>{{ parte.alumno }}</td>
+                <td>{{ parte.profesor }}</td>
+                <td>{{ parte.fechaCreacion|date('d/m/Y') }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -137,7 +137,7 @@ class Profesor
     /**
      * @return Parte[]|Collection
      */
-    public function getPartes(): array
+    public function getPartes(): Collection
     {
         return $this->partes;
     }
