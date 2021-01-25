@@ -49,9 +49,9 @@ class GrupoController extends AbstractController
     /**
      * @Route("/listadoAlumnado/{id}", name="apartado10_alumnado")
      */
-    public function ap10alumnado(AlumnoRepository $alumnoRepository, Grupo $grupo) : Response
+    public function ap10alumnado(Grupo $grupo) : Response
     {
-        $alumnado = $alumnoRepository->buscarPorGrupo($grupo);
+        $alumnado = $grupo->getAlumnado();
         return $this->render('alumno/listado_grupo.html.twig', [
             'alumnos' => $alumnado,
             'grupo' => $grupo
