@@ -16,6 +16,7 @@
                 <tr>
                     <td>{{ alumno.nombre }}</td>
                     <td>{{ alumno.apellidos }}</td>
+                    <td>{{ alumno.fechaNacimiento|date('d/m/Y') }}</td>
                     <td>{{ alumno.grupo }}</td>
                 </tr>
             {% endfor %}
