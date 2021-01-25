@@ -80,4 +80,16 @@ class NombreController extends AbstractController
             'cuenta' => $cuenta
         ]);
     }
+
+    /**
+     * @Route("/ap7/{anio}", name="apartado7", requirements={"anio":"\d+"})
+     */
+    public function ap7(AlumnoRepository $alumnoRepository, int $anio) : Response
+    {
+        $alumnos = $alumnoRepository->buscarAnioNacimientoOrdenado($anio);
+
+        return $this->render('alumno/listado.html.twig', [
+            'alumnos' => $alumnos
+        ]);
+    }
 }
