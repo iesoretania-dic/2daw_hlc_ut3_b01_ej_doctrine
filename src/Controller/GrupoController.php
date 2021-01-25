@@ -33,4 +33,32 @@ class GrupoController extends AbstractController
             'grupos' => $grupos
         ]);
     }
+
+    /**
+     * @Route("/ap10", name="apartado10")
+     */
+    public function ap10(GrupoRepository $grupoRepository) : Response
+    {
+        $grupos = $grupoRepository->buscarOrdenadosDescendienteConCuenta();
+        return $this->render('grupo/listado_con_cuenta_enlaces.html.twig', [
+            'grupos' => $grupos
+        ]);
+    }
+
+    /**
+     * @Route("/listadoAlumnado/{grupo}", name="apartado10_alumnado")
+     */
+    public function ap10alumnado(GrupoRepository $grupoRepository, AlumnoRepository $alumnoRepository, $grupo) : Response
+    {
+        $gr = $grupoRepository->find($grupo);
+
+        if ($gr === null) {
+            throw $this->createNotFoundException();
+        }
+        $alumnado = $alumnoRepository->buscarPorGrupo($gr);
+        return $this->render('alumno/listado_grupo.html.twig', [
+            'alumnos' => $alumnado,
+            'grupo' => $gr
+        ]);
+    }
 }

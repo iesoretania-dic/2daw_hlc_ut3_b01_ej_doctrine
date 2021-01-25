@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Alumno;
+use App\Entity\Grupo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -91,6 +92,16 @@ class AlumnoRepository extends ServiceEntityRepository
                 ORDER BY a.fechaNacimiento DESC")
             ->setParameter('inicio', $fechaInicio)
             ->setParameter('final', $fechaFinal)
+            ->getResult();
+    }
+
+    public function buscarPorGrupo(Grupo $grupo) : array
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery("SELECT a FROM App\\Entity\\Alumno a 
+                WHERE a.grupo = :grupo")
+            ->setParameter('grupo', $grupo)
             ->getResult();
     }
 }
