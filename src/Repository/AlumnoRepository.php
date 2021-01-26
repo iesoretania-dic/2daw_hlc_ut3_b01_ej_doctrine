@@ -122,4 +122,11 @@ class AlumnoRepository extends ServiceEntityRepository
             ->createQuery("SELECT a FROM App\\Entity\\Alumno a WHERE SIZE(a.partes) = 0 ORDER BY a.apellidos, a.nombre")
             ->getResult();
     }
+    public function buscarOrdenadosSinPartesJSON() : array
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery("SELECT a.id, a.apellidos, a.nombre FROM App\\Entity\\Alumno a WHERE SIZE(a.partes) = 0 ORDER BY a.apellidos, a.nombre")
+            ->getArrayResult();
+    }
 }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\AlumnoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -115,5 +116,15 @@ class AlumnoController extends AbstractController
         return $this->render('alumno/listado.html.twig', [
             'alumnos' => $alumnos
         ]);
+    }
+
+    /**
+     * @Route("/json/ap15", name="apartado15_json")
+     */
+    public function ap15JSON(AlumnoRepository $alumnoRepository) : Response
+    {
+        $alumnos = $alumnoRepository->buscarOrdenadosSinPartesJSON();
+
+        return new JsonResponse($alumnos);
     }
 }
