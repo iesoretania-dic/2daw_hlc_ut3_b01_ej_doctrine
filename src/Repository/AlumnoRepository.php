@@ -104,4 +104,13 @@ class AlumnoRepository extends ServiceEntityRepository
             ->setParameter('grupo', $grupo)
             ->getResult();
     }
+
+
+    public function buscarOrdenadosConCuentaPartesDescendentes() : array
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery("SELECT a AS alumno, SIZE(a.partes) AS num FROM App\\Entity\\Alumno a ORDER BY num DESC")
+            ->getResult();
+    }
 }

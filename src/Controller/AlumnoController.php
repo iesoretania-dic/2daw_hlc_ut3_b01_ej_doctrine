@@ -7,7 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class NombreController extends AbstractController
+class AlumnoController extends AbstractController
 {
     /**
      * @Route("/ap1", name="apartado1")
@@ -90,6 +90,20 @@ class NombreController extends AbstractController
 
         return $this->render('alumno/listado.html.twig', [
             'alumnos' => $alumnos
+        ]);
+    }
+
+
+
+    /**
+     * @Route("/ap12", name="apartado12")
+     */
+    public function ap12(AlumnoRepository $alumnoRepository) : Response
+    {
+        $items = $alumnoRepository->buscarOrdenadosConCuentaPartesDescendentes();
+
+        return $this->render('alumno/listado_con_partes.html.twig', [
+            'items' => $items
         ]);
     }
 }
