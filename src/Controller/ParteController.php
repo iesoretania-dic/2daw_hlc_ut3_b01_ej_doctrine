@@ -32,4 +32,16 @@ class ParteController extends AbstractController
             'partes' => $partes
         ]);
     }
+
+
+    /**
+     * @Route("/ap13/{texto}", name="apartado13")
+     */
+    public function ap13(ParteRepository $parteRepository, string $texto) : Response
+    {
+        $partes = $parteRepository->buscarPorTexto($texto);
+        return $this->render('parte/listado.html.twig', [
+            'partes' => $partes
+        ]);
+    }
 }

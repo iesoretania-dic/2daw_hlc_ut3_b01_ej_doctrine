@@ -22,4 +22,13 @@ class ParteRepository extends ServiceEntityRepository
             ->setParameter('profesor', $profesor)
             ->getResult();
     }
+
+    public function buscarPorTexto(string $texto)
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery("SELECT p FROM App\\Entity\\Parte p WHERE p.observaciones LIKE :texto")
+            ->setParameter('texto', '%' . $texto . '%')
+            ->getResult();
+    }
 }
