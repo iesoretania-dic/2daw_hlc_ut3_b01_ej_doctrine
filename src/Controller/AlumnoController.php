@@ -93,8 +93,6 @@ class AlumnoController extends AbstractController
         ]);
     }
 
-
-
     /**
      * @Route("/ap12", name="apartado12")
      */
@@ -104,6 +102,18 @@ class AlumnoController extends AbstractController
 
         return $this->render('alumno/listado_con_partes.html.twig', [
             'items' => $items
+        ]);
+    }
+
+    /**
+     * @Route("/ap15", name="apartado15")
+     */
+    public function ap15(AlumnoRepository $alumnoRepository) : Response
+    {
+        $alumnos = $alumnoRepository->buscarOrdenadosSinPartes();
+
+        return $this->render('alumno/listado.html.twig', [
+            'alumnos' => $alumnos
         ]);
     }
 }
