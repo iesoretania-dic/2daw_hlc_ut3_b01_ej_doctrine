@@ -20,4 +20,12 @@ class ProfesorRepository extends ServiceEntityRepository
             ->createQuery("SELECT p FROM App\\Entity\\Profesor p ORDER BY p.apellidos, p.nombre")
             ->getResult();
     }
+
+    public function buscarSinPartes() : array
+    {
+        return $this
+            ->getEntityManager()
+            ->createQuery("SELECT p FROM App\\Entity\\Profesor p WHERE SIZE(p.partes) = 0 ORDER BY p.apellidos, p.nombre")
+            ->getResult();
+    }
 }
