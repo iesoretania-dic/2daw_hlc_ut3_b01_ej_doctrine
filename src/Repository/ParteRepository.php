@@ -27,7 +27,7 @@ class ParteRepository extends ServiceEntityRepository
     {
         return $this
             ->getEntityManager()
-            ->createQuery("SELECT p FROM App\\Entity\\Parte p WHERE p.observaciones LIKE :texto")
+            ->createQuery("SELECT p, a, pr, g FROM App\\Entity\\Parte p JOIN p.alumno a JOIN p.profesor pr JOIN a.grupo g WHERE p.observaciones LIKE :texto")
             ->setParameter('texto', '%' . $texto . '%')
             ->getResult();
     }
