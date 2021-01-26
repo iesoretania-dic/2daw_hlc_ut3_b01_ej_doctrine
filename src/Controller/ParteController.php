@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Grupo;
 use App\Entity\Profesor;
 use App\Repository\ProfesorRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -30,18 +29,6 @@ class ParteController extends AbstractController
         $partes = $profesor->getPartes();
         return $this->render('parte/listado.html.twig', [
             'partes' => $partes
-        ]);
-    }
-
-    /**
-     * @Route("/listadoAlumnado/{id}", name="apartado10_alumnado")
-     */
-    public function ap10alumnado(Grupo $grupo) : Response
-    {
-        $alumnado = $grupo->getAlumnado();
-        return $this->render('alumno/listado_grupo.html.twig', [
-            'alumnos' => $alumnado,
-            'grupo' => $grupo
         ]);
     }
 }
