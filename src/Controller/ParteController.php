@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Profesor;
+use App\Repository\ParteRepository;
 use App\Repository\ProfesorRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,9 +25,9 @@ class ParteController extends AbstractController
     /**
      * @Route("/ap11/{id}", name="apartado11_partes")
      */
-    public function ap11Partes(Profesor $profesor) : Response
+    public function ap11Partes(ParteRepository $parteRepository, Profesor $profesor) : Response
     {
-        $partes = $profesor->getPartes();
+        $partes = $parteRepository->buscarPorProfesorOrdenados($profesor);
         return $this->render('parte/listado.html.twig', [
             'partes' => $partes
         ]);
